@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CustomSelect from "@/components/CustomSelect";
 
 export const metadata = {
   title: "Ký gửi Bất Động Sản | Pham Land",
@@ -7,180 +8,196 @@ export const metadata = {
 };
 
 export default function ConsignmentPage() {
+  const propertyOptions = [
+    { value: "nha-pho", label: "Nhà phố / Shophouse" },
+    { value: "can-ho", label: "Căn hộ hạng sang" },
+    { value: "dat-nen", label: "Đất nền / Đất dự án" },
+    { value: "biet-thu", label: "Biệt thự / Villa nghỉ dưỡng" },
+  ];
+
   return (
-    <main className="min-h-screen bg-background-light">
+    <main className="min-h-screen bg-white selection:bg-accent/30">
 
       {/* ═══════════════════════════════════════════════════════════════
-          1. HERO SECTION
+          1. HERO SECTION - High Contrast Cinematic
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ_jDH4IJ2nfsCqr_kIaPODF3tcArPT8wJpmje3I_KbaUZEiaqdzKWAkz8O56pxZI0gzNN77PpV8tFQBlpWB5yFm2F3KviEKvYkw7l3brUEd1FCKLQ1Bo9nbQvZ4W4TTl6u5x0eSRprtkn8P2lqmBvEaR8EpzS-AVQHGp6wivojvsxrJf6GqPE2sfPJH70yC-vkE5b_1zBP1OaNXjrv7s9m0PSmos40K1u62zyfyvS0b5yIuFn5Ck986s55Qa7sKsgFUafBSSRIsfp"
-            alt="Modern luxury real estate office building"
+            src="https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuCQ_jDH4IJ2nfsCqr_kIaPODF3tcArPT8wJpmje3I_KbaUZEiaqdzKWAkz8O56pxZI0gzNN77PpV8tFQBlpWB5yFm2F3KviEKvYkw7l3brUEd1FCKLQ1Bo9nbQvZ4W4TTl6u5x0eSRprtkn8P2lqmBvEaR8EpzS-AVQHGp6wivojvsxrJf6GqPE2sfPJH70yC-vkE5b_1zBP1OaNXjrv7s9m0PSmos40K1u62zyfyvS0b5yIuFn5Ck986s55Qa7sKsgFUafBSSRIsfp"
+            alt="Định giá và ký gửi bất động sản cao cấp"
             fill
             className="object-cover scale-105"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/60 to-primary/90"></div>
+          {/* Deep dark gradient for high contrast text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a1128]/95 via-[#0a1128]/80 to-[#0a1128]"></div>
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center pt-24 pb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 border border-white/20 bg-white/5 backdrop-blur-sm rounded-sm mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-            <span className="text-white/80 text-[11px] font-semibold uppercase tracking-[0.2em]">
-              Dịch vụ Ký Gửi
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-32 pb-20">
+          <div className="inline-flex items-center gap-3 px-5 py-2.5 border border-accent/40 bg-accent/10 backdrop-blur-md rounded-full mb-10 shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse shadow-[0_0_10px_rgba(212,175,55,0.8)]"></span>
+            <span className="text-accent text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em]">
+              Dịch vụ Ký Gửi Độc Quyền
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-medium leading-[1.1] mb-6 text-white">
-            Ký Gửi Bất Động Sản
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-serif font-bold leading-[1.1] mb-8 text-white tracking-tight">
+            Thanh Khoản Nhanh Chóng <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#f9e596] to-accent italic font-medium">Bảo Mật Tuyệt Đối</span>
           </h1>
-          <p className="text-lg sm:text-xl text-white/60 max-w-xl mx-auto mb-10 font-light leading-relaxed">
-            Bán nhanh — Giá tốt — Pháp lý minh bạch.
-            <br className="hidden sm:block" />
-            Kết nối trực tiếp với hàng ngàn nhà đầu tư tiềm năng.
+          
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+            Hệ thống tệp khách hàng V.I.P sẵn sàng giao dịch. Chúng tôi cam kết định giá chính xác, tư vấn pháp lý trọn gói và bảo vệ thông tin khách hàng ở mức độ cao nhất.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-5 justify-center">
             <a
               href="#ky-gui-form"
-              className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-white text-white hover:text-primary px-8 py-4 rounded-sm text-[13px] font-semibold uppercase tracking-widest transition-all duration-300"
+              className="inline-flex items-center justify-center gap-3 bg-accent hover:bg-white text-primary px-8 py-4 sm:py-5 rounded-sm text-[12px] sm:text-[13px] font-bold uppercase tracking-widest transition-all duration-500 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:shadow-[0_10px_30px_rgba(255,255,255,0.3)] group"
             >
-              Ký gửi ngay
-              <span className="material-symbols-outlined text-[16px]">arrow_downward</span>
+              Ký gửi tài sản
+              <span className="material-symbols-outlined text-[18px] group-hover:translate-y-1 transition-transform">south</span>
             </a>
-            <a
-              href="#quy-trinh"
-              className="inline-flex items-center justify-center gap-2 border border-white/25 text-white/90 hover:bg-white/10 px-8 py-4 rounded-sm text-[13px] font-semibold uppercase tracking-widest transition-all duration-300"
-            >
-              Quy trình
-            </a>
+          </div>
+          
+          {/* Trust Indicators inside Hero */}
+          <div className="mt-20 pt-10 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 max-w-4xl mx-auto">
+            {[
+              { num: "48h", text: "Khớp lệnh giao dịch" },
+              { num: "50k+", text: "Nhà đầu tư sẵn sàng" },
+              { num: "100%", text: "Bảo mật thông tin" },
+              { num: "0đ", text: "Phí tư vấn ban đầu" }
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="text-2xl sm:text-3xl font-serif font-bold text-white mb-1">{stat.num}</div>
+                <div className="text-[10px] sm:text-[11px] uppercase tracking-wider text-slate-400 font-medium">{stat.text}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          2. CONSIGNMENT FORM
+          2. CONSIGNMENT FORM - Luxury Dark Theme
       ═══════════════════════════════════════════════════════════════ */}
-      <section id="ky-gui-form" className="relative z-20 -mt-16 pb-24">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="bg-white rounded-sm p-8 sm:p-12 shadow-lux border border-slate-100">
+      <section id="ky-gui-form" className="relative z-20 py-24 bg-[#0a1128]">
+        {/* Decorative Grid Background */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+
+        <div className="w-full sm:max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="bg-white/5 backdrop-blur-xl rounded-sm p-5 sm:p-14 border border-white/10 shadow-2xl relative overflow-hidden">
+            {/* Glossy overlay effect */}
+            <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
+
             {/* Form Header */}
-            <div className="text-center mb-10">
-              <h2 className="text-2xl font-serif font-medium text-primary mb-3">Thông Tin Ký Gửi</h2>
-              <div className="w-10 h-[2px] bg-accent mx-auto"></div>
+            <div className="text-center mb-14 relative z-10">
+              <h2 className="text-3xl sm:text-4xl font-serif font-medium text-white mb-4">Mẫu Yêu Cầu Ký Gửi</h2>
+              <p className="text-slate-400 font-light text-sm sm:text-base">Vui lòng cung cấp thông tin chính xác để chuyên viên hỗ trợ thẩm định nhanh nhất.</p>
             </div>
 
-            <form className="space-y-10">
-              {/* Section: Property Info */}
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400 mb-6 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-[16px]">home_work</span>
-                  Thông tin bất động sản
+            <form className="space-y-12 relative z-10">
+              {/* Box 1: Contact Info (Now on top for trust) */}
+              <div className="p-5 sm:p-8 bg-white/5 border border-white/10 rounded-sm">
+                <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-accent mb-6 flex items-center gap-3">
+                  <span className="w-8 h-[1px] bg-accent/50 inline-block"></span>
+                  Thông tin cá nhân
                 </p>
-
-                <div className="space-y-6">
-                  <div className="relative">
-                    <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2 block">Loại bất động sản</label>
-                    <select className="w-full bg-transparent border-0 border-b border-slate-200 focus:border-accent focus:ring-0 py-3 text-primary font-light appearance-none cursor-pointer outline-none">
-                      <option value="">Chọn loại nhà đất</option>
-                      <option value="nha-pho">Nhà phố / Shophouse</option>
-                      <option value="can-ho">Căn hộ / Chung cư</option>
-                      <option value="dat-nen">Đất nền / Đất dự án</option>
-                      <option value="biet-thu">Biệt thự / Villa</option>
-                      <option value="mat-bang">Mặt bằng kinh doanh</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2 block">Địa chỉ</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="relative group">
                     <input
                       type="text"
-                      className="w-full bg-transparent border-0 border-b border-slate-200 focus:border-accent focus:ring-0 py-3 text-primary font-light placeholder:text-slate-300 outline-none"
-                      placeholder="Số nhà, tên đường, phường/xã, quận/huyện..."
+                      className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
+                      id="name"
+                      placeholder="Họ và tên"
+                      required
                     />
+                    <label htmlFor="name" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
+                      Họ và tên chủ sở hữu *
+                    </label>
                   </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2 block">Diện tích</label>
-                      <input
-                        type="number"
-                        className="w-full bg-transparent border-0 border-b border-slate-200 focus:border-accent focus:ring-0 py-3 text-primary font-light placeholder:text-slate-300 outline-none"
-                        placeholder="m²"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2 block">Giá kỳ vọng</label>
-                      <input
-                        type="text"
-                        className="w-full bg-transparent border-0 border-b border-slate-200 focus:border-accent focus:ring-0 py-3 text-primary font-light placeholder:text-slate-300 outline-none"
-                        placeholder="VNĐ"
-                      />
-                    </div>
+                  <div className="relative group">
+                    <input
+                      type="tel"
+                      className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
+                      id="phone"
+                      placeholder="Số điện thoại"
+                      required
+                    />
+                    <label htmlFor="phone" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
+                      Số điện thoại liên hệ *
+                    </label>
                   </div>
                 </div>
               </div>
 
-              {/* Section: Legal Documents */}
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400 mb-6 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-[16px]">verified_user</span>
-                  Pháp lý & Giấy tờ
+              {/* Box 2: Property Info */}
+              <div className="p-5 sm:p-8 bg-white/5 border border-white/10 rounded-sm">
+                <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-accent mb-6 flex items-center gap-3">
+                  <span className="w-8 h-[1px] bg-accent/50 inline-block"></span>
+                  Thông tin bất động sản
                 </p>
-                <label className="flex flex-col items-center justify-center px-6 py-10 border border-dashed border-slate-200 rounded-sm bg-slate-50/50 hover:bg-accent/5 hover:border-accent/30 transition-all duration-300 cursor-pointer group">
-                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-4 group-hover:scale-105 transition-transform border border-slate-100">
-                    <span className="material-symbols-outlined text-2xl text-accent">cloud_upload</span>
-                  </div>
-                  <p className="text-sm text-slate-600 font-medium mb-1">
-                    Tải lên Sổ đỏ / Sổ hồng
-                  </p>
-                  <p className="text-xs text-slate-400 font-light">PNG, JPG, PDF — tối đa 10MB</p>
-                  <input type="file" className="sr-only" multiple accept="image/*,.pdf" />
-                </label>
-              </div>
 
-              {/* Section: Contact */}
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-400 mb-6 flex items-center gap-2">
-                  <span className="material-symbols-outlined text-[16px]">person</span>
-                  Thông tin liên hệ
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2 block">Họ và tên</label>
+                <div className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <CustomSelect 
+                      options={propertyOptions}
+                      placeholder="Chọn loại hình tài sản *"
+                    />
+
+                    <div className="relative group">
+                      <input
+                        type="text"
+                        className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
+                        id="price"
+                        placeholder="Giá bán"
+                        required
+                      />
+                      <label htmlFor="price" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
+                        Mức giá mong muốn (VNĐ) *
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="relative group">
                     <input
                       type="text"
-                      className="w-full bg-transparent border-0 border-b border-slate-200 focus:border-accent focus:ring-0 py-3 text-primary font-light placeholder:text-slate-300 outline-none"
-                      placeholder="Nhập họ và tên"
+                      className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
+                      id="address"
+                      placeholder="Địa chỉ"
                       required
                     />
+                    <label htmlFor="address" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
+                      Địa chỉ chi tiết bất động sản *
+                    </label>
                   </div>
-                  <div>
-                    <label className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2 block">Số điện thoại</label>
-                    <input
-                      type="tel"
-                      className="w-full bg-transparent border-0 border-b border-slate-200 focus:border-accent focus:ring-0 py-3 text-primary font-light placeholder:text-slate-300 outline-none"
-                      placeholder="090xxxxxxx"
-                      required
-                    />
-                  </div>
+
+                  {/* Upload box */}
+                  <label className="flex flex-col items-center justify-center px-6 py-12 border border-dashed border-white/20 rounded-sm bg-white/5 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300 cursor-pointer group mt-4">
+                    <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform group-hover:bg-accent/20">
+                      <span className="material-symbols-outlined text-3xl text-accent">add_photo_alternate</span>
+                    </div>
+                    <p className="text-base text-white font-medium mb-2">
+                      Tải lên hình ảnh thực tế / Sổ đỏ
+                    </p>
+                    <p className="text-xs text-slate-400 font-light">Kéo thả file vào đây hoặc click để chọn (PNG, JPG — max 10MB)</p>
+                    <input type="file" className="sr-only" multiple accept="image/*" />
+                  </label>
                 </div>
               </div>
 
               {/* Submit */}
-              <div className="pt-4">
+              <div className="pt-6">
                 <button
                   type="submit"
-                  className="w-full bg-primary hover:bg-accent text-white font-semibold uppercase tracking-widest text-[12px] py-4 rounded-sm transition-all duration-300 flex items-center justify-center gap-2"
+                  className="w-full bg-accent hover:bg-white text-primary font-bold uppercase tracking-widest text-[13px] py-5 rounded-sm transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_5px_20px_rgba(212,175,55,0.3)] hover:shadow-[0_5px_20px_rgba(255,255,255,0.4)]"
                 >
-                  <span className="material-symbols-outlined text-[18px]">send</span>
-                  Gửi yêu cầu ký gửi
+                  Gửi thông tin định giá
+                  <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
                 </button>
-                <p className="mt-4 text-center text-[11px] text-slate-400 font-light flex items-center justify-center gap-1.5">
-                  <span className="material-symbols-outlined text-[14px] text-emerald-500">lock</span>
-                  Thông tin được bảo mật tuyệt đối
+                <p className="mt-6 text-center text-xs text-slate-400 font-light flex items-center justify-center gap-2">
+                  <span className="material-symbols-outlined text-[16px] text-accent">gpp_good</span>
+                  Giao dịch an toàn - Thông tin mã hóa chuẩn quân đội
                 </p>
               </div>
             </form>
@@ -189,45 +206,56 @@ export default function ConsignmentPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          3. WHY CHOOSE US
+          3. WHY CHOOSE US - Refined Commercial Look
       ═══════════════════════════════════════════════════════════════ */}
-      <section id="quy-trinh" className="py-24 bg-white">
+      <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <p className="text-accent text-[11px] font-semibold uppercase tracking-[0.2em] mb-4">Đặc quyền</p>
-            <h2 className="text-3xl md:text-4xl font-serif font-medium text-primary mb-4">Tại Sao Chọn Pham Land?</h2>
-            <div className="w-10 h-[1px] bg-accent mx-auto"></div>
+          <div className="text-center mb-20">
+            <p className="text-slate-400 text-[11px] font-bold uppercase tracking-[0.2em] mb-4 flex items-center justify-center gap-3">
+              <span className="w-8 h-[1px] bg-slate-300 inline-block"></span>
+              Đặc quyền đối tác
+              <span className="w-8 h-[1px] bg-slate-300 inline-block"></span>
+            </p>
+            <h2 className="text-3xl md:text-5xl font-serif font-bold text-primary mb-6">Tại sao uỷ thác cho Pham Land?</h2>
+            <p className="text-slate-500 font-light max-w-2xl mx-auto text-lg/relaxed">Thay vì mệt mỏi tự tìm kiếm người mua, hãy để chúng tôi thiết lập kỷ lục bán hàng mới cho bất động sản của bạn.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
             {[
               {
                 icon: "diversity_3",
-                title: "Mạng Lưới Rộng Khắp",
-                desc: "Kết nối hơn 50.000 khách hàng V.I.P và hệ thống đối tác liên kết trên toàn quốc.",
+                title: "Mạng Lưới V.I.P",
+                desc: "Tiếp cận trực tiếp hơn 50.000 hồ sơ khách hàng định danh, siêu giàu và các nhà đầu tư tổ chức đang săn tìm dự án tốt.",
               },
               {
                 icon: "camera_outdoor",
-                title: "Marketing Chuyên Nghiệp",
-                desc: "Quay phim Flycam, chụp ảnh chuyên nghiệp, chiến dịch truyền thông đa kênh.",
+                title: "Thương Hiệu Hóa Tài Sản",
+                desc: "Đội ngũ Media in-house quay chụp Flycam 4K, Virtual Tour 360, và thiết kế brochure định vị tầm vóc cho tài sản của bạn.",
               },
               {
                 icon: "gavel",
                 title: "Pháp Lý Trọn Gói",
-                desc: "Tư vấn và thực hiện mọi thủ tục sang tên, định giá tài sản minh bạch.",
+                desc: "Đội ngũ luật sư nội bộ trực tiếp rà soát, tư vấn thuế và hỗ trợ 100% thủ tục công chứng sang tên chỉ trong vòng 24 giờ.",
               },
             ].map((feature, idx) => (
               <div
                 key={idx}
-                className="group p-8 rounded-sm border border-slate-100 hover:border-accent/20 bg-background-light hover:bg-white hover:shadow-lux transition-all duration-500 text-center"
+                className="group relative bg-white border border-slate-100 p-8 lg:p-10 rounded-sm shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-accent/40 hover:shadow-[0_10px_40px_rgba(212,175,55,0.08)] transition-all duration-500 overflow-hidden"
               >
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm border border-slate-100 group-hover:border-accent/30 transition-colors">
-                  <span className="material-symbols-outlined text-3xl text-slate-400 group-hover:text-accent transition-colors">
-                    {feature.icon}
-                  </span>
+                {/* Number watermark */}
+                <div className="absolute -bottom-4 right-0 text-slate-100 font-serif text-9xl font-bold opacity-[0.4] z-0 pointer-events-none transition-transform duration-700 group-hover:scale-110 group-hover:text-slate-200">
+                  0{idx + 1}
                 </div>
-                <h3 className="text-lg font-serif font-medium text-primary mb-3">{feature.title}</h3>
-                <p className="text-slate-500 text-sm font-light leading-relaxed">{feature.desc}</p>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-slate-50 rounded-sm flex items-center justify-center mb-6 border border-slate-100 group-hover:bg-primary group-hover:border-primary transition-colors duration-500">
+                    <span className="material-symbols-outlined text-3xl text-primary group-hover:text-accent transition-colors duration-500">
+                      {feature.icon}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-serif font-bold text-primary mb-4">{feature.title}</h3>
+                  <p className="text-slate-600 font-light leading-relaxed">{feature.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -235,23 +263,30 @@ export default function ConsignmentPage() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════
-          4. CTA BANNER
+          4. CTA BANNER - Luxurious Touch
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="bg-primary py-16">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-white/40 text-[11px] font-semibold uppercase tracking-[0.2em] mb-4">Hỗ trợ trực tiếp</p>
-          <h2 className="text-3xl font-serif font-medium text-white mb-4">Cần Tư Vấn Ngay?</h2>
-          <p className="text-white/50 font-light mb-8 max-w-md mx-auto">
-            Chuyên viên cấp cao sẽ liên hệ tư vấn lộ trình thanh khoản tối ưu nhất trong vòng 5 phút.
+      <section className="bg-primary pt-20 pb-24 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent/10 to-transparent pointer-events-none"></div>
+        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+          <span className="material-symbols-outlined text-accent text-5xl mb-6 font-light">real_estate_agent</span>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">Trò Chuyện Cùng Chuyên Gia Giá Trị Cao</h2>
+          <p className="text-white/60 font-light mb-10 max-w-lg mx-auto text-lg/relaxed">
+            Nhận báo cáo định giá thị trường khu vực của bạn hoàn toàn miễn phí trong vòng 5 phút làm việc.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
               href="tel:0905000000"
-              className="inline-flex items-center gap-2 bg-accent hover:bg-white text-white hover:text-primary px-8 py-4 rounded-sm text-[13px] font-semibold uppercase tracking-widest transition-all duration-300"
+              className="inline-flex items-center gap-3 bg-accent hover:bg-white text-primary px-10 py-5 rounded-sm text-[13px] font-bold uppercase tracking-widest transition-all duration-300"
             >
-              <span className="material-symbols-outlined text-[18px]">call</span>
-              0905.XXX.XXX
+              <span className="material-symbols-outlined text-[20px]">call</span>
+              Goị điện ngay
             </Link>
+            <a
+              href="#ky-gui-form"
+              className="inline-flex items-center gap-3 border border-white/30 text-white hover:bg-white/10 px-10 py-5 rounded-sm text-[13px] font-bold uppercase tracking-widest transition-all duration-300"
+            >
+              Để lại thông tin
+            </a>
           </div>
         </div>
       </section>

@@ -20,7 +20,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative h-[85vh] min-h-[700px] flex items-center justify-center overflow-hidden"
+      className="relative h-[85vh] min-h-[600px] md:min-h-[700px] flex items-center justify-center overflow-hidden"
       aria-label="Giới thiệu Pham Land"
     >
       {/* Background Image with Darker Luxury Overlay */}
@@ -34,23 +34,23 @@ export default function HeroSection() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/50 to-primary/80"></div>
 
-      <div className="relative z-10 w-full max-w-5xl px-4 text-center mt-16">
+      <div className="relative z-10 w-full max-w-5xl px-4 text-center mt-20 md:mt-16">
         <div className="flex justify-center mb-6">
-          <span className="text-accent uppercase tracking-[0.3em] text-xs font-semibold px-4 py-1 border border-accent/30 rounded-full backdrop-blur-sm">
+          <span className="text-accent uppercase tracking-[0.2em] md:tracking-[0.3em] text-[10px] md:text-xs font-semibold px-3 md:px-4 py-1 border border-accent/30 rounded-full backdrop-blur-sm">
             Tinh Hoa Bất Động Sản
           </span>
         </div>
         
-        <h1 className="text-white text-5xl md:text-7xl font-serif font-medium mb-6 leading-tight drop-shadow-lg">
+        <h1 className="text-white text-3xl sm:text-5xl md:text-7xl font-serif font-medium mb-4 md:mb-6 leading-tight drop-shadow-lg">
           Khơi Nguồn Thịnh Vượng
-          <span className="block mt-2 text-3xl md:text-5xl font-light text-white/90">
+          <span className="block mt-1 md:mt-2 text-xl sm:text-3xl md:text-5xl font-light text-white/90">
             Giữa Tâm Điểm Miền Trung
           </span>
         </h1>
         
         <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-accent to-transparent mx-auto mb-8"></div>
         
-        <p className="text-slate-200 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+        <p className="text-slate-200 text-sm sm:text-lg md:text-xl mb-8 md:mb-12 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
           Chuyên trang tư vấn &amp; phân phối các dự án đất nền, biệt thự và căn hộ đẳng cấp tại Đà Nẵng, Quảng Nam, Quảng Bình.
         </p>
 

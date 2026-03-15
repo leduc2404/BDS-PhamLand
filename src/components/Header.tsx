@@ -16,10 +16,10 @@ const navLinks = [
       { label: "Quảng Bình", href: "/du-an/quang-binh" },
     ],
   },
-  { label: "Căn hộ", href: "/#can-ho" },
+  { label: "Căn hộ", href: "/can-ho" },
   { label: "Ký gửi", href: "/ky-gui" },
-  { label: "Tin tức", href: "/#tin-tuc" },
-  { label: "Liên hệ", href: "/#lien-he" },
+  { label: "Tin tức", href: "/tin-tuc" },
+  { label: "Liên hệ", href: "/lien-he" },
 ];
 
 export default function Header() {
@@ -29,7 +29,7 @@ export default function Header() {
 
   // Pages that have a dark hero get transparent header; all others get solid white
   const isHomepage = pathname === "/";
-  const hasDarkHero = isHomepage || pathname === "/ky-gui";
+  const hasDarkHero = isHomepage || pathname === "/ky-gui" || pathname === "/tin-tuc" || pathname === "/lien-he" || pathname === "/developer" || (pathname.startsWith("/tin-tuc/") && pathname !== "/tin-tuc/tat-ca");
   // Force solid header on pages without a dark hero
   const solid = scrolled || !hasDarkHero;
 
@@ -41,31 +41,34 @@ export default function Header() {
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
-    return pathname.startsWith(href.split("#")[0] || "/");
+    if (href.startsWith("/#")) return false;
+    // Check exact match for root level pages to avoid "/can-ho" highlighting "/can-ho/abc"
+    // Also correctly highlight /tin-tuc and /lien-he
+    return pathname.startsWith(href) && (pathname === href || pathname.startsWith(href + '/'));
   };
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-1000 ease-in-out ${
         solid
-          ? "bg-white/95 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.04)] py-3"
-          : "bg-transparent py-5"
+          ? "bg-white/95 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.04)] py-2.5 md:py-3"
+          : "bg-transparent py-2.5 md:py-5"
       }`}
       role="banner"
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group" aria-label="Pham Land - Trang chủ">
-          <div className={`w-10 h-10 rounded-sm flex items-center justify-center transition-all duration-500 ${solid ? "bg-primary" : "bg-white/15 backdrop-blur-sm border border-white/20"}`}>
-            <span className={`material-symbols-outlined text-2xl icon-filled transition-colors duration-500 ${solid ? "text-accent" : "text-white"}`} aria-hidden="true">
+          <div className={`w-8 h-8 md:w-10 md:h-10 rounded-sm flex items-center justify-center transition-all duration-1000 ease-in-out ${solid ? "bg-primary" : "bg-white/15 backdrop-blur-sm border border-white/20"}`}>
+            <span className={`material-symbols-outlined text-xl md:text-2xl icon-filled transition-colors duration-1000 ease-in-out ${solid ? "text-accent" : "text-white"}`} aria-hidden="true">
               landscape
             </span>
           </div>
           <div className="flex flex-col">
-            <span className={`text-lg font-serif font-bold leading-none tracking-tight transition-colors duration-500 ${solid ? "text-primary" : "text-white"}`}>
+            <span className={`text-base md:text-lg font-serif font-bold leading-none tracking-tight transition-colors duration-1000 ease-in-out ${solid ? "text-primary" : "text-white"}`}>
               PHAM LAND
             </span>
-            <span className={`text-[8px] font-semibold uppercase tracking-[0.3em] mt-0.5 transition-colors duration-500 ${solid ? "text-accent" : "text-white/60"}`}>
+            <span className={`text-[8px] font-semibold uppercase tracking-[0.3em] mt-0.5 transition-colors duration-1000 ease-in-out ${solid ? "text-accent" : "text-white/60"}`}>
               Real Estate
             </span>
           </div>
@@ -138,7 +141,7 @@ export default function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="tel:0905000000"
-            className={`hidden lg:flex px-5 py-2.5 rounded-sm font-semibold text-[12px] uppercase tracking-wider items-center gap-2 transition-all duration-500 ${
+            className={`hidden lg:flex px-5 py-2.5 rounded-sm font-semibold text-[12px] uppercase tracking-wider items-center gap-2 transition-all duration-1000 ease-in-out ${
               solid
                 ? "bg-primary text-white hover:bg-accent"
                 : "bg-white text-primary hover:bg-accent hover:text-white"

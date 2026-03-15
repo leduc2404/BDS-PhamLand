@@ -13,7 +13,7 @@ export const propertiesData: PropertyDetails[] = [
   {
     id: "dat-nen-my-khe-1",
     region: "da-nang",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     imageAlt: "Đất nền ven biển Mỹ Khê - Võ Nguyên Giáp",
     title: "Đất nền ven biển Mỹ Khê - Võ Nguyên Giáp",
     location: "Ngũ Hành Sơn, Đà Nẵng",
@@ -25,9 +25,9 @@ export const propertiesData: PropertyDetails[] = [
     tags: ["Sổ hồng riêng", "Xây tự do"],
     description: "Tọa lạc tại vị trí kim cương liền kề trục đường tỷ đô Võ Nguyên Giáp, lô đất nền Mỹ Khê mang đến cơ hội sở hữu bất động sản ven biển hiếm hoi còn sót lại. Nơi đây không chỉ là mảnh đất vàng để phát triển các loại hình dịch vụ lưu trú cao cấp như boutique hotel, homestay mà còn là tài sản tích lũy truyền đời với giá trị gia tăng bền vững theo thời gian.",
     gallery: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+      "https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     ],
     features: [
       { icon: "beach_access", text: "Cách bãi biển Mỹ Khê 200m" },
@@ -45,7 +45,7 @@ export const propertiesData: PropertyDetails[] = [
   {
     id: "khu-do-thi-sun-river-city-2",
     region: "quang-nam",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     imageAlt: "Khu đô thị sinh thái Sun River City",
     title: "Khu đô thị sinh thái Sun River City",
     location: "Điện Bàn, Quảng Nam",
@@ -57,8 +57,8 @@ export const propertiesData: PropertyDetails[] = [
     tags: ["Hạ tầng 100%", "Ven sông Cổ Cò"],
     description: "Sở hữu vị trí kề giang cận hải, Sun River City là kiệt tác khu đô thị ven sông Cổ Cò được dòng chảy tài lộc bao quanh. Với quy hoạch đồng bộ, điện âm toàn khu và dải công viên ven sông trải dài, dự án hứa hẹn mang đến chuẩn mực sống sinh thái đẳng cấp bậc nhất khu vực Nam Đà Nẵng - Bắc Hội An.",
     gallery: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     ],
     features: [
       { icon: "water", text: "Quy hoạch công viên ven sông" },
@@ -76,7 +76,7 @@ export const propertiesData: PropertyDetails[] = [
   {
     id: "biet-thu-riverside-hoian-3",
     region: "quang-nam",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+    image: "https://images.unsplash.com/photo-1600585153490-76fb20a32601?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     imageAlt: "Biệt thự Riverside Thủy Tú Hội An",
     title: "Biệt thự Riverside Thủy Tú Hội An",
     location: "TP. Hội An, Quảng Nam",
@@ -88,7 +88,7 @@ export const propertiesData: PropertyDetails[] = [
     tags: ["Bến du thuyền", "An ninh 24/7"],
     description: "Khẳng định đẳng cấp sống thượng lưu với những căn biệt thự Riverside phiên bản giới hạn tại Thủy Tú Hội An. Mỗi căn biệt thự đều sở hữu bến du thuyền riêng trước nhà, mang đậm kiến trúc Đông Dương hoài cổ nhưng vẫn ngập tràn hơi thở đương đại.",
     gallery: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     ],
     features: [
       { icon: "sailing", text: "Bến du thuyền tư gia" },
@@ -104,7 +104,7 @@ export const propertiesData: PropertyDetails[] = [
   {
     id: "bao-ninh-resort-quang-binh-4",
     region: "quang-binh",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     imageAlt: "Đất nền trung tâm Bảo Ninh Resort",
     title: "Đất nền trung tâm Bảo Ninh Resort",
     location: "Bán đảo Bảo Ninh, Đồng Hới",
@@ -115,7 +115,7 @@ export const propertiesData: PropertyDetails[] = [
     tags: ["Ven biển", "Kề sân Golf"],
     description: "Nằm kề cận quần thể resort và sân golf đẳng cấp quốc tế trên dải cát trắng Bảo Ninh. Đây là quỹ đất sinh lời phi mã trong tương lai khi du lịch Quảng Bình đang cất cánh mạnh mẽ.",
     gallery: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     ],
     features: [
       { icon: "golf_course", text: "Gần sân Golf quốc tế" },
@@ -129,7 +129,7 @@ export const propertiesData: PropertyDetails[] = [
   {
     id: "fpt-city-da-nang-5",
     region: "da-nang",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+    image: "https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     imageAlt: "Khu đô thị FPT City - Nam Đà Nẵng",
     title: "Khu đô thị FPT City - Nam Đà Nẵng",
     location: "Ngũ Hành Sơn, Đà Nẵng",
@@ -141,7 +141,7 @@ export const propertiesData: PropertyDetails[] = [
     tags: ["Gần làng Đại học"],
     description: "Trở thành cư dân của đô thị công nghệ FPT City với hệ thống giáo dục quốc tế từ mầm non đến đại học nội khu. Môi trường tri thức, cộng đồng văn minh và tỷ lệ cây xanh phủ kín mang đến nguồn cảm hứng sống tuyệt vời.",
     gallery: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     ],
     features: [
       { icon: "school", text: "Trường đua liên cấp FPT" },
@@ -155,7 +155,7 @@ export const propertiesData: PropertyDetails[] = [
   {
     id: "shophouse-hoi-an-6",
     region: "quang-nam",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     imageAlt: "Shophouse khối đế phố cổ Hội An",
     title: "Shophouse khối đế phố cổ Hội An",
     location: "Cẩm Phô, Hội An",
@@ -166,7 +166,7 @@ export const propertiesData: PropertyDetails[] = [
     tags: ["Thương mại cao", "2 mặt tiền"],
     description: "Nhà phố thương mại (Shophouse) ngay vùng lõi phố cổ Hội An di sản. Vị trí độc tôn, số lượng khan hiếm, cam kết mang lại dòng doanh thu cho thuê ổn định và thặng dư vốn cực lớn.",
     gallery: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe",
     ],
     features: [
       { icon: "storefront", text: "Kinh doanh đa ngành nghề" },

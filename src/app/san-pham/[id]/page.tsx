@@ -1,17 +1,23 @@
 import { getPropertyById, propertiesData } from "@/data/properties";
+import { getApartmentById, apartmentsData } from "@/data/apartments";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
 export async function generateStaticParams() {
-  return propertiesData.map((property) => ({
+  const allIds = [...propertiesData, ...apartmentsData].map((property) => ({
     id: property.id.toString(),
   }));
+  return allIds;
 }
 
 export default async function PropertyDetailPage(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
-  const property = await getPropertyById(params.id);
+  let property = await getPropertyById(params.id);
+  
+  if (!property) {
+    property = await getApartmentById(params.id);
+  }
 
   if (!property) {
     notFound();
@@ -154,47 +160,71 @@ export default async function PropertyDetailPage(props: { params: Promise<{ id: 
             )}
           </div>
 
-          {/* Right Sidebar */}
+          {/* Right Sidebar - Premium Dark Mode Lead Capture */}
           <aside className="lg:col-span-4">
-            <div className="sticky top-28 bg-white border border-slate-100 rounded-sm shadow-lux p-6 sm:p-8">
-              <div className="text-center mb-6 pb-6 border-b border-slate-100">
-                <p className="text-[10px] uppercase tracking-widest text-slate-400 font-semibold mb-2">Giá tham khảo</p>
-                <div className="text-3xl font-serif font-medium text-primary mb-2">{property.price}</div>
-                <p className="text-[12px] font-light text-emerald-600 flex items-center justify-center gap-1">
-                  <span className="material-symbols-outlined text-[14px]">verified</span>
-                  Pháp lý minh bạch
+            <div className="sticky top-28 bg-[#0a1128] rounded-sm p-6 sm:p-8 relative overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] ring-1 ring-white/10">
+              {/* Glossy overlay effect */}
+              <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
+              
+              <div className="relative z-10 text-center mb-8 pb-8 border-b border-white/10">
+                <p className="text-[10px] uppercase tracking-widest text-accent font-bold mb-3 flex items-center justify-center gap-2">
+                  <span className="w-4 h-[1px] bg-accent/50"></span>
+                  Giá tham khảo
+                  <span className="w-4 h-[1px] bg-accent/50"></span>
+                </p>
+                <div className="text-3xl lg:text-4xl font-serif font-bold text-white mb-3 tracking-tight">{property.price}</div>
+                <p className="text-[11px] font-medium text-emerald-400/90 flex items-center justify-center gap-1.5 uppercase tracking-wider">
+                  <span className="material-symbols-outlined text-[14px]">verified_user</span>
+                  Pháp lý minh bạch 100%
                 </p>
               </div>
 
-              <h3 className="text-sm font-serif font-medium text-primary mb-5 text-center">Nhận thông tin chi tiết</h3>
+              <div className="relative z-10">
+                <h3 className="text-sm font-serif font-medium text-white mb-6 text-center">Đăng ký nhận quỹ căn độc quyền</h3>
 
-              <form className="space-y-4">
-                <input
-                  type="text"
-                  required
-                  className="w-full bg-slate-50 border border-slate-200 focus:border-accent focus:ring-0 py-3 px-4 rounded-sm outline-none text-primary text-sm font-light placeholder:text-slate-400"
-                  placeholder="Họ và tên *"
-                />
-                <input
-                  type="tel"
-                  required
-                  className="w-full bg-slate-50 border border-slate-200 focus:border-accent focus:ring-0 py-3 px-4 rounded-sm outline-none text-primary text-sm font-light placeholder:text-slate-400"
-                  placeholder="Số điện thoại *"
-                />
-                <button
-                  type="button"
-                  className="w-full bg-primary hover:bg-accent text-white font-semibold py-3.5 rounded-sm text-[12px] uppercase tracking-widest flex items-center justify-center gap-2 transition-colors"
-                >
-                  <span className="material-symbols-outlined text-[16px]">download</span>
-                  Tải bảng giá
-                </button>
-                <div className="text-center pt-1">
-                  <p className="text-[11px] text-slate-400 font-light">Hotline:</p>
-                  <a href="tel:0905000000" className="text-accent font-medium tracking-wider hover:underline block mt-0.5">
-                    0905.XXX.XXX
-                  </a>
-                </div>
-              </form>
+                <form className="space-y-6">
+                  <div className="relative group">
+                    <input
+                      type="text"
+                      required
+                      className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent hover:border-slate-500 focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
+                      id="sidebar_name"
+                      placeholder="Họ và tên *"
+                    />
+                    <label htmlFor="sidebar_name" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
+                      Họ và tên *
+                    </label>
+                  </div>
+
+                  <div className="relative group">
+                    <input
+                      type="tel"
+                      required
+                      className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent hover:border-slate-500 focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
+                      id="sidebar_phone"
+                      placeholder="Số điện thoại *"
+                    />
+                    <label htmlFor="sidebar_phone" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
+                      Số điện thoại *
+                    </label>
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-accent hover:bg-white text-primary font-bold py-4 rounded-sm text-[12px] uppercase tracking-widest flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_5px_20px_rgba(212,175,55,0.2)] mt-2"
+                  >
+                    Tải bảng giá & CSBH
+                    <span className="material-symbols-outlined text-[16px]">download</span>
+                  </button>
+                  
+                  <div className="text-center pt-4">
+                    <p className="text-[10px] text-slate-400 font-light uppercase tracking-widest mb-1.5">Hotline hỗ trợ 24/7</p>
+                    <a href="tel:0905000000" className="text-white text-lg font-serif italic hover:text-accent transition-colors">
+                      0905.000.000
+                    </a>
+                  </div>
+                </form>
+              </div>
             </div>
           </aside>
         </div>

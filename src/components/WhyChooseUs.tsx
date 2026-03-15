@@ -66,10 +66,6 @@ export default function WhyChooseUs() {
                 <p className="text-slate-400 font-light leading-relaxed text-sm md:text-base group-hover:text-slate-300 transition-colors">
                   {feature.description}
                 </p>
-                
-                <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-white/10 mt-auto flex">
-                  <span className="w-12 h-[1px] bg-accent/50 group-hover:w-full transition-all duration-700 ease-in-out"></span>
-                </div>
               </div>
             </article>
           ))}

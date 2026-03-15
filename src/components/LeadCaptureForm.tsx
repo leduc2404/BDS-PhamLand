@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import CustomSelect from "./CustomSelect";
 
 export default function LeadCaptureForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -96,24 +97,23 @@ export default function LeadCaptureForm() {
                   />
                 </div>
                 
-                <div className="space-y-1 group">
-                  <label htmlFor="area" className="text-xs uppercase tracking-widest text-slate-400 font-semibold group-focus-within:text-primary transition-colors">
+                <div className="space-y-1 group relative z-50">
+                  <label className="text-xs uppercase tracking-widest text-slate-400 font-semibold group-focus-within:text-primary transition-colors">
                     Khu vực quan tâm
                   </label>
-                  <div className="relative">
-                    <select
-                      id="area"
-                      className="w-full bg-transparent border-0 border-b border-slate-200 focus:ring-0 focus:border-b-accent focus:border-accent py-3 outline-none text-slate-800 transition-colors appearance-none font-light px-0"
-                    >
-                      <option value="all">Tất cả khu vực</option>
-                      <option value="da-nang">Đà Nẵng</option>
-                      <option value="quang-nam">Quảng Nam</option>
-                      <option value="quang-binh">Quảng Bình</option>
-                    </select>
-                    <span className="absolute right-0 top-1/2 -translate-y-1/2 material-symbols-outlined text-slate-400 pointer-events-none font-light">
-                      expand_more
-                    </span>
-                  </div>
+                  <CustomSelect 
+                    options={[
+                      { value: "all", label: "Tất cả khu vực" },
+                      { value: "da-nang", label: "Đà Nẵng" },
+                      { value: "quang-nam", label: "Quảng Nam" },
+                      { value: "quang-binh", label: "Quảng Bình" },
+                    ]}
+                    placeholder="Tất cả khu vực"
+                    defaultValue="all"
+                    theme="light"
+                    floatingLabel={false}
+                    className="w-full bg-transparent border-0 border-b py-3 text-left font-light outline-none transition-colors px-0"
+                  />
                 </div>
                 
                 <button
