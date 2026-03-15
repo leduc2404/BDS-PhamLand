@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function HeroSection() {
   const router = useRouter();
@@ -23,15 +24,17 @@ export default function HeroSection() {
       className="relative h-[85vh] min-h-[600px] md:min-h-[700px] flex items-center justify-center overflow-hidden"
       aria-label="Giới thiệu Pham Land"
     >
-      {/* Background Image with Darker Luxury Overlay */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transform scale-105 animate-[slowZoom_20s_ease-in-out_infinite_alternate]"
-        style={{
-          backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe')`,
-        }}
-        role="img"
-        aria-label="Hình ảnh flycam dự án đất nền ven biển Miền Trung"
-      />
+      {/* Background Image with optimized next/image for LCP */}
+      <div className="absolute inset-0 transform scale-105 animate-[slowZoom_20s_ease-in-out_infinite_alternate]">
+        <Image
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRNPa_7_WJ85J9HgRhbcOlfUB-3hQ5Xs0nn-O54xtO2GXT5DA7wE2w7OxyFsGVu_Esg61iJOMyIQ_VooQgWhHs7eeyWS--fORglOOqwm0XvcLqTuQnI2u83lGCrt8QjmgFmDDDh0g7ruNq5p8mUZ9QWXLGb8gmQxymNb2kjolaIV49k7l55LT6h3L2dDvGLeCuG2i6HgG-uGi_Oki5fPzg7UJ86Vzl97mKCVIKh8UeiX8tswTOZ_PCfDXjBMAwd9iq-dH3LBie2nSe"
+          alt="Hình ảnh flycam dự án đất nền ven biển Miền Trung"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/50 to-primary/80"></div>
 
       <div className="relative z-10 w-full max-w-5xl px-4 text-center mt-20 md:mt-16">

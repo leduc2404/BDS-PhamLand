@@ -1,8 +1,10 @@
 import HeroSection from "@/components/HeroSection";
-import InvestmentHotspots from "@/components/InvestmentHotspots";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import ApartmentCarousel from "@/components/ApartmentCarousel";
-import LeadCaptureForm from "@/components/LeadCaptureForm";
+import dynamic from "next/dynamic";
+
+const InvestmentHotspots = dynamic(() => import("@/components/InvestmentHotspots"));
+const WhyChooseUs = dynamic(() => import("@/components/WhyChooseUs"));
+const ApartmentCarousel = dynamic(() => import("@/components/ApartmentCarousel"));
+const LeadCaptureForm = dynamic(() => import("@/components/LeadCaptureForm"));
 
 export default function Home() {
   const jsonLdItemList = {
