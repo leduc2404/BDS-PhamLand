@@ -33,6 +33,7 @@ export default function HeroSection() {
           priority
           sizes="100vw"
           className="object-cover object-center"
+          unoptimized
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/50 to-primary/80"></div>
