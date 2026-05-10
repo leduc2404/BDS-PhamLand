@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 import Link from "next/link";
 
 export interface PropertyCardProps {
@@ -29,10 +28,13 @@ export default function PropertyCard({
   badge,
   tags,
 }: PropertyCardProps) {
+  const isApartment = secondValue.toLowerCase() === "căn hộ";
+  const href = isApartment ? `/can-ho/${id}` : `/du-an/${id}`;
+
   return (
-    <Link href={`/san-pham/${id}`} className="block h-full group">
-      <article className="bg-surface rounded-md overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-lux-hover transition-all duration-700 flex flex-col h-full transform group-hover:-translate-y-1">
-        {/* Image Container with Elegant Hover Overlay */}
+    <Link href={href} className="block h-full group cursor-pointer">
+      <article className="bg-surface rounded-lg overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-lux-hover transition-all duration-700 flex flex-col h-full transform group-hover:-translate-y-1.5">
+        {/* Image Container */}
         <div className="relative h-[280px] overflow-hidden">
           <Image
           src={image}
@@ -42,10 +44,10 @@ export default function PropertyCard({
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         
-        {/* Dark subtle gradient at the bottom for image depth */}
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+        {/* Gradient overlay for depth */}
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
 
-        {/* Premium Hover Overlay Trigger */}
+        {/* Premium Hover Overlay */}
         <div className="absolute inset-0 bg-primary/20 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
           <div className="flex items-center gap-2 px-6 py-3 bg-white text-primary font-medium uppercase tracking-widest text-[11px] rounded-sm shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-all duration-[400ms] overflow-hidden">
             <span className="relative z-10 flex items-center gap-2">
@@ -57,7 +59,7 @@ export default function PropertyCard({
           </div>
         </div>
 
-        {/* Badges and Tags */}
+        {/* Badge */}
         {badge && (
           <div
             className={`absolute top-4 left-4 border ${
@@ -70,6 +72,7 @@ export default function PropertyCard({
           </div>
         )}
         
+        {/* Tags */}
         {tags && tags.length > 0 && (
           <div className="absolute bottom-4 left-4 flex flex-wrap gap-2 z-10 opacity-100 group-hover:opacity-0 transition-opacity duration-300">
             {tags.map((tag) => (
@@ -113,8 +116,12 @@ export default function PropertyCard({
             {price}
           </div>
           
-          {/* Subtle line indicator for "Details" instead of heavy text button on bottom */}
-          <div className="w-8 h-[1px] bg-slate-300 group-hover:w-16 group-hover:bg-accent transition-all duration-500"></div>
+          {/* Animated arrow circle */}
+          <div className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
+            <span className="material-symbols-outlined text-base text-slate-400 group-hover:text-white transition-colors" aria-hidden="true">
+              arrow_outward
+            </span>
+          </div>
         </div>
         </div>
       </article>

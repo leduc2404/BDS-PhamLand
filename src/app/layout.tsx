@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import StickyContactButtons from "@/components/StickyContactButtons";
+import { MainLayoutWrapper } from "@/components/MainLayoutWrapper";
 
 const inter = Inter({
   subsets: ["latin", "vietnamese"],
@@ -128,10 +126,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-background-light text-slate-800 antialiased selection:bg-accent/20 selection:text-accent`}>
-        <Header />
-        {children}
-        <Footer />
-        <StickyContactButtons />
+        <MainLayoutWrapper>{children}</MainLayoutWrapper>
       </body>
     </html>
   );

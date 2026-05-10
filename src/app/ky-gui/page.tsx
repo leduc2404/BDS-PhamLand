@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import CustomSelect from "@/components/CustomSelect";
+import ConsignmentForm from "@/components/ConsignmentForm";
 
 export const metadata = {
   title: "Ký gửi Bất Động Sản | Pham Land",
@@ -8,13 +8,6 @@ export const metadata = {
 };
 
 export default function ConsignmentPage() {
-  const propertyOptions = [
-    { value: "nha-pho", label: "Nhà phố / Shophouse" },
-    { value: "can-ho", label: "Căn hộ hạng sang" },
-    { value: "dat-nen", label: "Đất nền / Đất dự án" },
-    { value: "biet-thu", label: "Biệt thự / Villa nghỉ dưỡng" },
-  ];
-
   return (
     <main className="min-h-screen bg-white selection:bg-accent/30">
 
@@ -96,111 +89,7 @@ export default function ConsignmentPage() {
               <p className="text-slate-400 font-light text-sm sm:text-base">Vui lòng cung cấp thông tin chính xác để chuyên viên hỗ trợ thẩm định nhanh nhất.</p>
             </div>
 
-            <form className="space-y-12 relative z-10">
-              {/* Box 1: Contact Info (Now on top for trust) */}
-              <div className="p-5 sm:p-8 bg-white/5 border border-white/10 rounded-sm">
-                <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-accent mb-6 flex items-center gap-3">
-                  <span className="w-8 h-[1px] bg-accent/50 inline-block"></span>
-                  Thông tin cá nhân
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="relative group">
-                    <input
-                      type="text"
-                      className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
-                      id="name"
-                      placeholder="Họ và tên"
-                      required
-                    />
-                    <label htmlFor="name" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
-                      Họ và tên chủ sở hữu *
-                    </label>
-                  </div>
-                  <div className="relative group">
-                    <input
-                      type="tel"
-                      className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
-                      id="phone"
-                      placeholder="Số điện thoại"
-                      required
-                    />
-                    <label htmlFor="phone" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
-                      Số điện thoại liên hệ *
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              {/* Box 2: Property Info */}
-              <div className="p-5 sm:p-8 bg-white/5 border border-white/10 rounded-sm">
-                <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-accent mb-6 flex items-center gap-3">
-                  <span className="w-8 h-[1px] bg-accent/50 inline-block"></span>
-                  Thông tin bất động sản
-                </p>
-
-                <div className="space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <CustomSelect 
-                      options={propertyOptions}
-                      placeholder="Chọn loại hình tài sản *"
-                    />
-
-                    <div className="relative group">
-                      <input
-                        type="text"
-                        className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
-                        id="price"
-                        placeholder="Giá bán"
-                        required
-                      />
-                      <label htmlFor="price" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
-                        Mức giá mong muốn (VNĐ) *
-                      </label>
-                    </div>
-                  </div>
-
-                  <div className="relative group">
-                    <input
-                      type="text"
-                      className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-accent focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
-                      id="address"
-                      placeholder="Địa chỉ"
-                      required
-                    />
-                    <label htmlFor="address" className="absolute left-0 top-3 text-slate-400 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-500 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
-                      Địa chỉ chi tiết bất động sản *
-                    </label>
-                  </div>
-
-                  {/* Upload box */}
-                  <label className="flex flex-col items-center justify-center px-6 py-12 border border-dashed border-white/20 rounded-sm bg-white/5 hover:bg-accent/10 hover:border-accent/50 transition-all duration-300 cursor-pointer group mt-4">
-                    <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform group-hover:bg-accent/20">
-                      <span className="material-symbols-outlined text-3xl text-accent">add_photo_alternate</span>
-                    </div>
-                    <p className="text-base text-white font-medium mb-2">
-                      Tải lên hình ảnh thực tế / Sổ đỏ
-                    </p>
-                    <p className="text-xs text-slate-400 font-light">Kéo thả file vào đây hoặc click để chọn (PNG, JPG — max 10MB)</p>
-                    <input type="file" className="sr-only" multiple accept="image/*" />
-                  </label>
-                </div>
-              </div>
-
-              {/* Submit */}
-              <div className="pt-6">
-                <button
-                  type="submit"
-                  className="w-full bg-accent hover:bg-white text-primary font-bold uppercase tracking-widest text-[13px] py-5 rounded-sm transition-all duration-300 flex items-center justify-center gap-3 shadow-[0_5px_20px_rgba(212,175,55,0.3)] hover:shadow-[0_5px_20px_rgba(255,255,255,0.4)]"
-                >
-                  Gửi thông tin định giá
-                  <span className="material-symbols-outlined text-[20px]">arrow_forward</span>
-                </button>
-                <p className="mt-6 text-center text-xs text-slate-400 font-light flex items-center justify-center gap-2">
-                  <span className="material-symbols-outlined text-[16px] text-accent">gpp_good</span>
-                  Giao dịch an toàn - Thông tin mã hóa chuẩn quân đội
-                </p>
-              </div>
-            </form>
+            <ConsignmentForm />
           </div>
         </div>
       </section>
@@ -275,11 +164,11 @@ export default function ConsignmentPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Link
-              href="tel:0905000000"
+              href="tel:0905098018"
               className="inline-flex items-center gap-3 bg-accent hover:bg-white text-primary px-10 py-5 rounded-sm text-[13px] font-bold uppercase tracking-widest transition-all duration-300"
             >
               <span className="material-symbols-outlined text-[20px]">call</span>
-              Goị điện ngay
+              Gọi điện ngay
             </Link>
             <a
               href="#ky-gui-form"

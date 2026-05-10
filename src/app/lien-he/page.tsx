@@ -1,5 +1,5 @@
 import Image from "next/image";
-import CustomSelect from "@/components/CustomSelect";
+import ContactForm from "@/components/ContactForm";
 
 export const metadata = {
   title: "Đặc quyền liên hệ | Pham Land",
@@ -7,13 +7,6 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  const interestedOptions = [
-    { value: "mua", label: "Xây dựng danh mục Đầu tư mới" },
-    { value: "ban", label: "Ký gửi & Phân phối Tài sản" },
-    { value: "phap-ly", label: "Hoạch định Pháp lý giao dịch" },
-    { value: "khac", label: "Hỗ trợ đặc quyền khác" },
-  ];
-
   return (
     <main className="min-h-screen bg-slate-50">
       {/* ═══════════════════════════════════════════════════════════════
@@ -84,9 +77,9 @@ export default function ContactPage() {
             <div>
               <p className="text-primary/70 font-light text-sm mb-4">Kết nối trực tiếp giám đốc hệ thống</p>
               <div className="space-y-1">
-                <a href="tel:0905000000" className="flex items-center gap-3 text-primary font-serif font-bold text-3xl md:text-4xl group-hover:drop-shadow-md transition-all duration-300">
+                <a href="tel:0905098018" className="flex items-center gap-3 text-primary font-serif font-bold text-3xl md:text-4xl group-hover:drop-shadow-md transition-all duration-300">
                   <span className="material-symbols-outlined text-[20px] shrink-0">call</span>
-                  0905.000.000
+                  0905.098.018
                 </a>
               </div>
             </div>
@@ -171,76 +164,7 @@ export default function ContactPage() {
                {/* Ambient Glow */}
                <div className="absolute top-0 right-0 w-64 h-64 bg-accent blur-[100px] opacity-10 rounded-full pointer-events-none"></div>
 
-               <form className="space-y-8 relative z-10">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                     <div className="relative group">
-                        <input
-                           type="text"
-                           className="w-full bg-transparent border-0 border-b border-slate-700/80 focus:border-accent hover:border-slate-500 focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
-                           id="vip_name"
-                           placeholder="Họ và tên"
-                           required
-                        />
-                        <label htmlFor="vip_name" className="absolute left-0 top-3 text-slate-500 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-400 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
-                           Họ và tên *
-                        </label>
-                     </div>
-                     <div className="relative group">
-                        <input
-                           type="tel"
-                           className="w-full bg-transparent border-0 border-b border-slate-700/80 focus:border-accent hover:border-slate-500 focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
-                           id="vip_phone"
-                           placeholder="Số điện thoại"
-                           required
-                        />
-                        <label htmlFor="vip_phone" className="absolute left-0 top-3 text-slate-500 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-400 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
-                           Số điện thoại *
-                        </label>
-                     </div>
-                  </div>
-
-                  <div className="relative group">
-                     <input
-                        type="email"
-                        className="w-full bg-transparent border-0 border-b border-slate-700/80 focus:border-accent hover:border-slate-500 focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors"
-                        id="vip_email"
-                        placeholder="Email"
-                     />
-                     <label htmlFor="vip_email" className="absolute left-0 top-3 text-slate-500 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-400 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
-                        Địa chỉ Email
-                     </label>
-                  </div>
-
-                  <div className="relative z-20">
-                     <CustomSelect 
-                        options={interestedOptions}
-                        theme="dark"
-                        placeholder="Chọn cấu trúc tư vấn"
-                        label="Lĩnh vực tư vấn *"
-                        className="w-full bg-transparent border-0 border-b py-3 text-left font-light outline-none transition-colors px-0"
-                     />
-                  </div>
-
-                  <div className="relative group">
-                     <textarea
-                        className="w-full bg-transparent border-0 border-b border-slate-700/80 focus:border-accent hover:border-slate-500 focus:ring-0 py-3 text-white font-light placeholder:text-transparent peer outline-none transition-colors resize-none h-24"
-                        id="vip_message"
-                        placeholder="Nội dung"
-                        required
-                     ></textarea>
-                     <label htmlFor="vip_message" className="absolute left-0 top-3 text-slate-500 text-sm font-light transition-all peer-focus:-top-4 peer-focus:text-[10px] peer-focus:text-accent peer-focus:uppercase peer-focus:tracking-widest peer-focus:font-medium peer-valid:-top-4 peer-valid:text-[10px] peer-valid:text-slate-400 peer-valid:uppercase peer-valid:tracking-widest cursor-text pointer-events-none">
-                        Đề xuất & Yêu cầu chi tiết *
-                     </label>
-                  </div>
-
-                  <button
-                     type="submit"
-                     className="w-full bg-accent hover:bg-white text-primary font-bold uppercase tracking-widest text-[13px] py-5 mt-6 rounded-sm transition-all duration-500 flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(212,175,55,0.2)] hover:shadow-[0_15px_40px_rgba(255,255,255,0.2)] group/btn"
-                  >
-                     Thiết Lập Kết Nối VIP
-                     <span className="material-symbols-outlined text-[20px] group-hover/btn:translate-x-1 transition-transform duration-300">east</span>
-                  </button>
-               </form>
+               <ContactForm />
             </div>
           </div>
           

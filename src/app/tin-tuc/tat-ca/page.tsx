@@ -1,10 +1,13 @@
 "use client";
 
-import { useState, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { newsData } from "@/data/news";
 import { useSearchParams } from "next/navigation";
+import { getArticles } from "@/lib/firestore";
+import { format } from "date-fns";
+import { vi } from "date-fns/locale";
 
 function AllNewsContent() {
   const searchParams = useSearchParams();
@@ -12,6 +15,7 @@ function AllNewsContent() {
   
   const [searchQuery, setSearchQuery] = useState(initQuery);
   const [activeCategory, setActiveCategory] = useState("Tất cả");
+  const [firestoreArticles, setFirestoreArticles] = useState<any[]>([]);
 
   useEffect(() => {
     if (initQuery) {
@@ -19,11 +23,35 @@ function AllNewsContent() {
     }
   }, [initQuery]);
 
+  useEffect(() => {
+    getArticles(100).then(data => {
+      const mapped = data.filter(a => a.isPublished !== false).map(a => ({
+        id: a.slug || a.id,
+        title: a.title,
+        excerpt: a.summary || a.title,
+        content: a.content,
+        imageUrl: a.thumbnailUrl || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+        category: "Thị trường", // default or mapped from tags if added later
+        author: a.author || "Admin",
+        date: a.createdAt ? format(a.createdAt.toDate(), "dd/MM/yyyy", { locale: vi }) : "Mới đây",
+        readTime: Math.max(1, Math.ceil((a.content?.length || 500) / 1000))
+      }));
+      setFirestoreArticles(mapped);
+    }).catch((error) => {
+      console.error("Firestore news fetch failed:", error);
+      // Fallback: firestoreArticles stays empty, page shows static newsData only
+    });
+  }, []);
+
+  const combinedNews = useMemo(() => {
+    return [...newsData, ...firestoreArticles];
+  }, [firestoreArticles]);
+
   // Get unique categories dynamically
-  const categories = ["Tất cả", ...Array.from(new Set(newsData.map(item => item.category)))];
+  const categories = ["Tất cả", ...Array.from(new Set(combinedNews.map(item => item.category)))];
 
   // Filter logic
-  const filteredNews = newsData.filter(article => {
+  const filteredNews = combinedNews.filter(article => {
     const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = activeCategory === "Tất cả" || article.category === activeCategory;

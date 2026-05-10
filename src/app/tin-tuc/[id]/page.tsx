@@ -2,6 +2,10 @@ import { getArticleById, newsData } from "@/data/news";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { doc, getDoc, collection, query, where, getDocs, limit } from "firebase/firestore";
+import { db } from "@/lib/firebase";
+import { format } from "date-fns";
+import { vi } from "date-fns/locale";
 
 export async function generateStaticParams() {
   return newsData.map((article) => ({
@@ -9,14 +13,124 @@ export async function generateStaticParams() {
   }));
 }
 
+export const dynamicParams = true;
+
+async function getFirestoreArticle(idOrSlug: string) {
+  try {
+    // 1. Try by document ID
+    const docRef = doc(db, "news", idOrSlug);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return { id: docSnap.id, ...docSnap.data() };
+    }
+
+    // 2. Try by slug field
+    const q = query(
+      collection(db, "news"),
+      where("slug", "==", idOrSlug),
+      limit(1)
+    );
+    const snapshot = await getDocs(q);
+    if (!snapshot.empty) {
+      const docData = snapshot.docs[0];
+      return { id: docData.id, ...docData.data() };
+    }
+  } catch {
+    // Firestore unavailable, fall through
+  }
+  return null;
+}
+
 export default async function NewsDetailPage(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
-  const article = await getArticleById(params.id);
+  
+  // 1. Try static data first
+  const staticArticle = await getArticleById(params.id);
 
-  if (!article) {
+  // 2. Try Firestore
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let firestoreArticle: any = null;
+  if (!staticArticle) {
+    firestoreArticle = await getFirestoreArticle(params.id);
+  }
+
+  if (!staticArticle && !firestoreArticle) {
     notFound();
   }
 
+  // Firestore article rendering
+  if (firestoreArticle) {
+    const fa = firestoreArticle;
+    const formattedDate = fa.createdAt ? format(fa.createdAt.toDate(), "dd/MM/yyyy", { locale: vi }) : "Mới đây";
+    const readTime = Math.max(1, Math.ceil((fa.content?.length || 500) / 1000));
+    
+    return (
+      <main className="min-h-screen bg-white pb-24">
+        <section className="relative h-[70vh] min-h-[500px] flex items-end pb-16 overflow-hidden bg-[#0a1128]">
+          <div className="absolute inset-0 z-0 opacity-50 mix-blend-luminosity">
+            <img
+              src={fa.thumbnailUrl || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"}
+              alt={fa.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a1128] via-[#0a1128]/60 to-transparent"></div>
+          </div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-6 w-full">
+            <div className="flex flex-wrap items-center gap-4 mb-6 text-[10px] font-bold uppercase tracking-widest text-slate-300">
+              <Link href="/tin-tuc" className="hover:text-white transition-colors">Tin tức</Link>
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-500"></span>
+              <Link href="/tin-tuc/tat-ca" className="hover:text-white transition-colors">Thị trường</Link>
+            </div>
+            
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-8 leading-tight">
+              {fa.title}
+            </h1>
+
+            <div className="flex items-center gap-6 justify-between border-t border-white/20 pt-6">
+              <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
+                    <span className="material-symbols-outlined text-white/80">edit</span>
+                  </div>
+                  <div>
+                    <p className="text-white font-medium text-sm">{fa.author || "Admin"}</p>
+                    <p className="text-slate-400 font-light text-[11px] uppercase tracking-wider">{formattedDate} • {readTime} phút đọc</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="max-w-3xl mx-auto px-6 py-16">
+          {fa.summary && (
+            <>
+              <p className="text-xl md:text-2xl font-light text-primary leading-relaxed mb-12 first-letter:text-7xl first-letter:font-serif first-letter:font-bold first-letter:text-accent first-letter:mr-3 first-letter:float-left drop-cap-fallback">
+                {fa.summary}
+              </p>
+              <div className="w-16 h-[1px] bg-slate-200 mb-12 mx-auto"></div>
+            </>
+          )}
+
+          <article className="prose prose-lg prose-slate max-w-none font-light text-slate-600 leading-loose prose-headings:font-serif prose-headings:text-primary prose-headings:font-medium prose-a:text-accent hover:prose-a:text-primary">
+            <div dangerouslySetInnerHTML={{ __html: fa.content?.replace(/\n/g, "<br/>") || "" }} />
+          </article>
+
+          <div className="mt-16 pt-8 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-6">
+             <div className="flex gap-2">
+                <span className="px-4 py-1.5 bg-slate-50 text-slate-500 rounded-full text-xs hover:bg-slate-100 cursor-pointer transition-colors">#BấtĐộngSản</span>
+             </div>
+             <Link href="/tin-tuc/tat-ca" className="text-sm font-bold uppercase tracking-widest text-accent hover:text-primary transition-colors flex items-center gap-2">
+                <span className="material-symbols-outlined text-[18px]">arrow_back</span>
+                Trở về kho tri thức
+             </Link>
+          </div>
+        </section>
+      </main>
+    );
+  }
+
+  // Static article rendering
+  const article = staticArticle!;
   return (
     <main className="min-h-screen bg-white pb-24">
       {/* ═══════════════════════════════════════════════════════════════
@@ -76,13 +190,7 @@ export default async function NewsDetailPage(props: { params: Promise<{ id: stri
 
          <div className="w-16 h-[1px] bg-slate-200 mb-12 mx-auto"></div>
 
-         {/* Markdown/HTML injection simulation */}
          <article className="prose prose-lg prose-slate max-w-none font-light text-slate-600 leading-loose prose-headings:font-serif prose-headings:text-primary prose-headings:font-medium prose-a:text-accent hover:prose-a:text-primary">
-            {/* 
-               In a real app with backend data, this would be: 
-               <div dangerouslySetInnerHTML={{ __html: article.content }} />
-               Below we mock a luxurious article structure.
-            */}
             <h2>Bức tranh toàn cảnh</h2>
             <p>Thị trường bất động sản đang chứng kiến những chuyển biến tích cực hiếm có sau chu kỳ điều chỉnh cơ cấu. Sự thanh lọc mạnh mẽ giúp những chủ đầu tư uy tín, có tiềm lực tài chính thực sự tỏa sáng, tạo lập tiêu chuẩn mặt bằng giá mới.</p>
             

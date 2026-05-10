@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import PropertyCard from "./PropertyCard";
 import { propertiesData, type PropertyDetails } from "@/data/properties";
+import { getProperties } from "@/lib/firestore";
 
 interface PropertyListingPageProps {
   region?: string;
@@ -23,7 +24,9 @@ function parsePriceToNumber(price: string): number {
 }
 
 function parseAreaToNumber(area: string): number {
-  const match = area.match(/([\d.]+)/);
+  const typeofArea = typeof area;
+  if (typeofArea === "number") return area as any;
+  const match = String(area).match(/([\d.]+)/);
   return match ? parseFloat(match[1]) : 0;
 }
 
@@ -33,13 +36,48 @@ export default function PropertyListingPage({ region, title, subtitle }: Propert
   const [areaRange, setAreaRange] = useState("all");
   const [legalStatus, setLegalStatus] = useState("all");
   const [filterOpen, setFilterOpen] = useState(false);
+  const [firestoreProperties, setFirestoreProperties] = useState<any[]>([]);
 
   const activeRegion = region || "all";
 
+  useEffect(() => {
+    // Fetch Firestore properties on mount
+    getProperties(100).then((data) => {
+      // Map Firestore properties to match PropertyDetails shape for the UI
+      const mapped = data.map((p) => ({
+        id: p.slug || p.id,
+        title: p.title,
+        location: p.location,
+        price: p.priceDisplay || `${(p.price / 1000000000).toFixed(1)} Tỷ`,
+        area: p.area.toString(),
+        image: p.thumbnailUrl || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+        imageAlt: p.title,
+        badge: p.isHot ? { text: "HOT", color: "accent" } : undefined,
+        secondLabel: "Loại",
+        secondValue: p.propertyType === "land" ? "Đất nền" : p.propertyType === "apartment" ? "Căn hộ" : p.propertyType === "villa" ? "Biệt thự" : p.propertyType === "shophouse" ? "Shophouse" : p.propertyType === "townhouse" ? "Nhà phố" : "Bất động sản",
+        overview: [],
+        description: p.description,
+        gallery: p.images || [],
+        region: p.location?.toLowerCase().includes("đà nẵng") ? "da-nang" :
+                p.location?.toLowerCase().includes("quảng nam") ? "quang-nam" :
+                p.location?.toLowerCase().includes("quảng bình") ? "quang-binh" : "other",
+        createdAt: p.createdAt?.toMillis?.() || Date.now(),
+        tags: ["sổ đỏ", "pháp lý"]
+      }));
+      
+      mapped.sort((a, b) => b.createdAt - a.createdAt);
+      
+      setFirestoreProperties(mapped);
+    }).catch((error) => {
+      console.error("Firestore properties fetch failed:", error);
+    });
+  }, []);
+
   const filtered = useMemo(() => {
-    let result: PropertyDetails[] = region
-      ? propertiesData.filter((p) => p.region === region)
-      : [...propertiesData];
+    const combinedData = [...firestoreProperties, ...propertiesData];
+    let result: any[] = region
+      ? combinedData.filter((p) => p.region === region)
+      : [...combinedData];
 
     if (priceRange !== "all") {
       result = result.filter((p) => {
@@ -78,11 +116,12 @@ export default function PropertyListingPage({ region, title, subtitle }: Propert
     result.sort((a, b) => {
       if (sortBy === "price-asc") return parsePriceToNumber(a.price) - parsePriceToNumber(b.price);
       if (sortBy === "price-desc") return parsePriceToNumber(b.price) - parsePriceToNumber(a.price);
-      return 0;
+      // Default: newest first (by createdAt timestamp if available)
+      return (b.createdAt || 0) - (a.createdAt || 0);
     });
 
     return result;
-  }, [region, priceRange, areaRange, legalStatus, sortBy]);
+  }, [region, priceRange, areaRange, legalStatus, sortBy, firestoreProperties]);
 
   const hasActiveFilters = priceRange !== "all" || areaRange !== "all" || legalStatus !== "all";
 

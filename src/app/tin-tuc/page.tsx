@@ -1,15 +1,41 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getFeaturedArticle, getOtherArticles, getAllNews } from "@/data/news";
+import { getFeaturedArticle, getOtherArticles, newsData } from "@/data/news";
+import { getArticles } from "@/lib/firestore";
+import { format } from "date-fns";
+import { vi } from "date-fns/locale";
 
 export const metadata = {
   title: "Tin tức & Phân tích | Pham Land",
   description: "Góc nhìn chuyên sâu, phân tích thị trường và cẩm nang từ các chuyên gia bất động sản hàng đầu tại Pham Land.",
 };
 
-export default function NewsPage() {
-  const featuredArticle = getFeaturedArticle();
-  const otherArticles = getOtherArticles();
+export const dynamic = "force-dynamic";
+
+export default async function NewsPage() {
+  let mappedFirestore: any[] = [];
+  
+  try {
+    const firestoreDocs = await getArticles(6);
+    mappedFirestore = firestoreDocs.filter(a => a.isPublished !== false).map(a => ({
+      id: a.slug || a.id,
+      title: a.title,
+      excerpt: a.summary || a.title,
+      content: a.content,
+      imageUrl: a.thumbnailUrl || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+      category: "Thị trường",
+      author: a.author || "Admin",
+      date: a.createdAt ? format(a.createdAt.toDate(), "dd/MM/yyyy", { locale: vi }) : "Mới đây",
+      readTime: Math.max(1, Math.ceil((a.content?.length || 500) / 1000))
+    }));
+  } catch (error) {
+    console.error("Firestore news fetch failed, using static data:", error);
+  }
+
+  const allNews = [...mappedFirestore, ...getOtherArticles(), getFeaturedArticle()].filter(Boolean) as any[];
+  
+  const featuredArticle = mappedFirestore.length > 0 ? mappedFirestore[0] : getFeaturedArticle();
+  const otherArticles = mappedFirestore.length > 0 ? allNews.slice(1, 4) : getOtherArticles();
 
   return (
     <main className="min-h-screen bg-background">

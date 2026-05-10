@@ -1,14 +1,39 @@
-import { Metadata } from "next";
-import PropertyCard from "@/components/PropertyCard";
-import { apartmentsData } from "@/data/apartments";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Căn Hộ Hạng Sang | Pham Land - Tinh Hoa Bất Động Sản",
-  description: "Bộ sưu tập các căn hộ hạng sang, shophouse đẳng cấp tại Đà Nẵng, Hội An, miền Trung được phân phối bởi Pham Land.",
-};
+import { useState, useEffect } from "react";
+import PropertyCard from "@/components/PropertyCard";
+import { getProperties } from "@/lib/firestore";
 
 export default function CanHoPage() {
-  const displayProperties = apartmentsData;
+  const [firestoreApartments, setFirestoreApartments] = useState<any[]>([]);
+
+  useEffect(() => {
+    // Fetch Firestore properties on mount
+    getProperties(100).then((data) => {
+      // Filter for apartments and map to PropertyCard props
+      const apts = data.filter(p => p.propertyType === "apartment");
+      const mapped = apts.map((p) => ({
+        id: p.slug || p.id,
+        title: p.title,
+        location: p.location,
+        price: p.priceDisplay || `${(p.price / 1000000000).toFixed(1)} Tỷ`,
+        area: p.area.toString() + " m²",
+        image: p.thumbnailUrl || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+        imageAlt: p.title,
+        badge: p.isHot ? { text: "HOT", color: "accent" } : undefined,
+        secondLabel: "HƯỚNG",
+        secondValue: "Căn hộ", // Identifying it as apartment for routing in PropertyCard
+        tags: ["sổ đỏ", "bàn giao ngay"],
+        createdAt: p.createdAt?.toMillis?.() || Date.now()
+      }));
+      
+      // Sort newest first
+      mapped.sort((a, b) => b.createdAt - a.createdAt);
+      setFirestoreApartments(mapped);
+    }).catch(console.error);
+  }, []);
+
+  const displayProperties = firestoreApartments;
 
   return (
     <main className="pt-24 md:pt-32 pb-16 md:pb-24 bg-background-light min-h-screen">

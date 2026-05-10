@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import InvestmentHotspots from "@/components/InvestmentHotspots";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import FounderSection from "@/components/FounderSection";
 import ApartmentCarousel from "@/components/ApartmentCarousel";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 export default function Home() {
@@ -68,6 +69,7 @@ export default function Home() {
       <HeroSection />
       <InvestmentHotspots />
       <WhyChooseUs />
+      <FounderSection />
       <ApartmentCarousel />
       <LeadCaptureForm />
     </main>

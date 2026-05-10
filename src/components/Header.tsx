@@ -140,7 +140,7 @@ export default function Header() {
         {/* CTA + Mobile Toggle */}
         <div className="flex items-center gap-3">
           <Link
-            href="tel:0905000000"
+            href="tel:0905098018"
             className={`hidden lg:flex px-5 py-2.5 rounded-sm font-semibold text-[12px] uppercase tracking-wider items-center gap-2 transition-all duration-1000 ease-in-out ${
               solid
                 ? "bg-primary text-white hover:bg-accent"
@@ -201,7 +201,7 @@ export default function Header() {
           ))}
           <div className="pt-4 border-t border-slate-100 mt-2">
             <Link
-              href="tel:0905000000"
+              href="tel:0905098018"
               className="flex items-center justify-center gap-2 w-full bg-primary text-white py-3.5 rounded-sm font-semibold text-xs uppercase tracking-widest hover:bg-accent transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
