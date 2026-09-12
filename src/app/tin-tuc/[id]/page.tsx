@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getArticleById, newsData } from "@/data/news";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -39,6 +40,50 @@ async function getFirestoreArticle(idOrSlug: string) {
     // Firestore unavailable, fall through
   }
   return null;
+}
+
+export async function generateMetadata(props: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const params = await props.params;
+  const staticArticle = await getArticleById(params.id);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let firestoreArticle: any = null;
+  if (!staticArticle) {
+    firestoreArticle = await getFirestoreArticle(params.id);
+  }
+
+  const article = staticArticle || firestoreArticle;
+  if (!article) {
+    return {
+      title: "Tin tức Bất Động Sản | Pham Land",
+      description: "Tin tức, nhận định và phân tích thị trường bất động sản miền Trung từ Pham Land.",
+    };
+  }
+
+  const title = `${article.title} | Pham Land`;
+  const description = (article.excerpt || article.summary || article.content || "")
+    .toString()
+    .replace(/<[^>]*>/g, "")
+    .slice(0, 160);
+  const image = article.thumbnailUrl || article.imageUrl || "https://www.bdsphamland.com/og-image.jpg";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `https://www.bdsphamland.com/tin-tuc/${params.id}`,
+      images: [{ url: image, alt: article.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
 }
 
 export default async function NewsDetailPage(props: { params: Promise<{ id: string }> }) {
