@@ -144,7 +144,7 @@ export default async function PropertyDetailView({ id }: { id: string }) {
                 </div>
                 <div className="relative z-10">
                   <h3 className="text-sm font-serif font-medium text-white mb-6 text-center">Đăng ký nhận quỹ căn độc quyền</h3>
-                  <SidebarContactForm propertyTitle={fp.title} propertyPrice={fp.priceDisplay || `${(fp.price / 1_000_000_000).toFixed(1)} Tỷ`} propertyUrl={`https://phamland.vn/du-an/${fp.slug || fp.id}`} />
+                  <SidebarContactForm propertyTitle={fp.title} propertyPrice={fp.priceDisplay || `${(fp.price / 1_000_000_000).toFixed(1)} Tỷ`} propertyUrl={`https://bdsphamland.com/du-an/${fp.slug || fp.id}`} />
                 </div>
               </div>
             </aside>
@@ -261,7 +261,7 @@ export default async function PropertyDetailView({ id }: { id: string }) {
               </div>
               <div className="relative z-10">
                 <h3 className="text-sm font-serif font-medium text-white mb-6 text-center">Đăng ký nhận quỹ căn độc quyền</h3>
-                  <SidebarContactForm propertyTitle={p.title} propertyPrice={p.price} propertyUrl={`https://phamland.vn/du-an/${p.id}`} />
+                  <SidebarContactForm propertyTitle={p.title} propertyPrice={p.price} propertyUrl={`https://bdsphamland.com/du-an/${p.id}`} />
               </div>
             </div>
           </aside>

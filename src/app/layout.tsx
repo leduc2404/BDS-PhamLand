@@ -41,14 +41,14 @@ export const metadata: Metadata = {
     telephone: true,
     email: true,
   },
-  metadataBase: new URL("https://phamland.vn"),
+  metadataBase: new URL("https://bdsphamland.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "vi_VN",
-    url: "https://phamland.vn",
+    url: "https://bdsphamland.com",
     siteName: "Pham Land",
     title: "Pham Land - Đất Nền Miền Trung | Đà Nẵng, Quảng Nam, Quảng Bình",
     description:
@@ -80,6 +80,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "3s8BsIM5pWzGYGU-AaUWUp2SSQtjsQeMFjvhQ_c-ZWY",
+  },
 };
 
 const jsonLd = {
@@ -88,7 +91,7 @@ const jsonLd = {
   name: "Pham Land",
   description:
     "Đơn vị tư vấn bất động sản uy tín hàng đầu tại Miền Trung. Chuyên đất nền, căn hộ tại Đà Nẵng, Quảng Nam, Quảng Bình.",
-  url: "https://phamland.vn",
+  url: "https://bdsphamland.com",
   telephone: "+84905000000",
   email: "info@phamland.vn",
   address: {

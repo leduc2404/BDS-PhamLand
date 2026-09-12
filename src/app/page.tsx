@@ -19,7 +19,7 @@ export default function Home() {
           "@type": "RealEstateListing",
           name: "Đất nền ven biển Mỹ Khê - Võ Nguyên Giáp",
           description: "Lô đất 105m² ven biển Mỹ Khê, hướng Đông Nam, sổ hồng riêng, xây tự do",
-          url: "https://phamland.vn",
+          url: "https://bdsphamland.com",
           offers: {
             "@type": "Offer",
             price: "4800000000",
@@ -34,7 +34,7 @@ export default function Home() {
           "@type": "RealEstateListing",
           name: "Khu đô thị Sun River City - GĐ 2",
           description: "Lô đất 120m² tại Điện Ngọc, hạ tầng 100% hoàn thiện",
-          url: "https://phamland.vn",
+          url: "https://bdsphamland.com",
           offers: {
             "@type": "Offer",
             price: "1250000000",
@@ -49,7 +49,7 @@ export default function Home() {
           "@type": "RealEstateListing",
           name: "Biệt thự ven sông Hội An Riverside",
           description: "Biệt thự 250m² ven sông Cổ Cò tại Cẩm Hà, Hội An",
-          url: "https://phamland.vn",
+          url: "https://bdsphamland.com",
           offers: {
             "@type": "Offer",
             price: "12500000000",

@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/"],
       },
     ],
-    sitemap: "https://phamland.vn/sitemap.xml",
+    sitemap: "https://bdsphamland.com/sitemap.xml",
   };
 }
