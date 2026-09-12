@@ -16,11 +16,11 @@ export default function Footer() {
             <div className="flex items-center gap-2">
               <div className="w-10 h-10 rounded-sm overflow-hidden shrink-0">
                 <Image
-                  src="/logo.svg"
+                  src="/logo.png"
                   alt="Pham Land Logo"
                   width={40}
                   height={40}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover rounded-full"
                 />
               </div>
               <div className="flex flex-col">

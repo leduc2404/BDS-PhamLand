@@ -62,11 +62,11 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-3 group" aria-label="Pham Land - Trang chủ">
           <div className="relative w-8 h-8 md:w-10 md:h-10 shrink-0 rounded-sm overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-105">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="Pham Land Logo"
               width={40}
               height={40}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover rounded-full"
               priority
             />
           </div>
