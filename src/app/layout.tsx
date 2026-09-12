@@ -83,6 +83,13 @@ export const metadata: Metadata = {
   verification: {
     google: "3s8BsIM5pWzGYGU-AaUWUp2SSQtjsQeMFjvhQ_c-ZWY",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
 };
 
 const jsonLd = {

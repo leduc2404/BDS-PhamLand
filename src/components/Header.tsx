@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
@@ -59,10 +60,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group" aria-label="Pham Land - Trang chủ">
-          <div className={`w-8 h-8 md:w-10 md:h-10 rounded-sm flex items-center justify-center transition-all duration-1000 ease-in-out ${solid ? "bg-primary" : "bg-white/15 backdrop-blur-sm border border-white/20"}`}>
-            <span className={`material-symbols-outlined text-xl md:text-2xl icon-filled transition-colors duration-1000 ease-in-out ${solid ? "text-accent" : "text-white"}`} aria-hidden="true">
-              landscape
-            </span>
+          <div className="relative w-8 h-8 md:w-10 md:h-10 shrink-0 rounded-sm overflow-hidden shadow-sm transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/logo.svg"
+              alt="Pham Land Logo"
+              width={40}
+              height={40}
+              className="w-full h-full object-contain"
+              priority
+            />
           </div>
           <div className="flex flex-col">
             <span className={`text-base md:text-lg font-serif font-bold leading-none tracking-tight transition-colors duration-1000 ease-in-out ${solid ? "text-primary" : "text-white"}`}>

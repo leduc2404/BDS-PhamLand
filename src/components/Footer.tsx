@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -13,8 +14,14 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-sm bg-white/5 border border-white/10 flex items-center justify-center">
-                <span className="material-symbols-outlined text-2xl md:text-3xl text-accent icon-filled" aria-hidden="true">landscape</span>
+              <div className="w-10 h-10 rounded-sm overflow-hidden shrink-0">
+                <Image
+                  src="/logo.svg"
+                  alt="Pham Land Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-base md:text-lg font-serif font-black leading-none tracking-tight text-white">PHAM LAND</span>
