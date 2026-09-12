@@ -43,38 +43,45 @@ async function getPropertyData(idOrSlug: string) {
 export async function generateMetadata(props: {
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const params = await props.params;
-  const property = await getPropertyData(params.id);
+  try {
+    const params = await props.params;
+    const property = await getPropertyData(params.id);
 
-  if (!property) {
+    if (!property) {
+      return {
+        title: "Chi tiết bất động sản | Pham Land",
+        description: "Xem thông tin chi tiết dự án bất động sản phân phối bởi Pham Land.",
+      };
+    }
+
+    const title = `${property.title} | Pham Land`;
+    const description =
+      property.description?.toString().replace(/<[^>]*>/g, "").slice(0, 160) ||
+      `Thông tin chi tiết ${property.title} tại ${property.location || "Miền Trung"}. Giá: ${property.priceDisplay || "Thỏa thuận"}`;
+    const image = property.thumbnailUrl || property.image || "https://www.bdsphamland.com/og-image.jpg";
+
+    return {
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        url: `https://www.bdsphamland.com/du-an/${params.id}`,
+        images: [{ url: image, alt: property.title }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [image],
+      },
+    };
+  } catch {
     return {
       title: "Chi tiết bất động sản | Pham Land",
       description: "Xem thông tin chi tiết dự án bất động sản phân phối bởi Pham Land.",
     };
   }
-
-  const title = `${property.title} | Pham Land`;
-  const description =
-    property.description?.toString().replace(/<[^>]*>/g, "").slice(0, 160) ||
-    `Thông tin chi tiết ${property.title} tại ${property.location || "Miền Trung"}. Giá: ${property.priceDisplay || "Thỏa thuận"}`;
-  const image = property.thumbnailUrl || property.image || "https://www.bdsphamland.com/og-image.jpg";
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: `https://www.bdsphamland.com/du-an/${params.id}`,
-      images: [{ url: image, alt: property.title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [image],
-    },
-  };
 }
 
 export default async function ProjectDetailPage(props: { params: Promise<{ id: string }> }) {

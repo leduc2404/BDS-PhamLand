@@ -7,7 +7,7 @@ import { doc, getDoc, collection, query, where, getDocs, limit } from "firebase/
 import { db } from "@/lib/firebase";
 import PropertyGallery from "@/components/PropertyGallery";
 import SidebarContactForm from "@/components/SidebarContactForm";
-import DOMPurify from "isomorphic-dompurify";
+
 
 async function getFirestoreProperty(idOrSlug: string) {
   try {
@@ -124,7 +124,7 @@ export default async function PropertyDetailView({ id }: { id: string }) {
                   <h2 className="text-xl font-serif font-medium text-primary mb-4">Tổng Quan</h2>
                   <div className="w-8 h-[2px] bg-accent mb-6"></div>
                   <div className="text-slate-600 font-light leading-relaxed space-y-4">
-                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(fp.description.replace(/\n/g, '<br/>')) }} />
+                    <div dangerouslySetInnerHTML={{ __html: fp.description.replace(/\n/g, '<br/>') }} />
                   </div>
                 </section>
               )}
@@ -238,7 +238,7 @@ export default async function PropertyDetailView({ id }: { id: string }) {
                 <div className="w-8 h-[2px] bg-accent mb-6"></div>
                 <div className="text-slate-600 font-light leading-relaxed space-y-4">
                   {typeof p.description === "string" ? (
-                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(p.description.replace(/\n/g, '<br/>')) }} />
+                    <div dangerouslySetInnerHTML={{ __html: p.description.replace(/\n/g, '<br/>') }} />
                   ) : (
                     <div>{p.description}</div>
                   )}

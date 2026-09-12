@@ -43,38 +43,45 @@ async function getApartmentData(idOrSlug: string) {
 export async function generateMetadata(props: {
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
-  const params = await props.params;
-  const apt = await getApartmentData(params.id);
+  try {
+    const params = await props.params;
+    const apt = await getApartmentData(params.id);
 
-  if (!apt) {
+    if (!apt) {
+      return {
+        title: "Chi tiết căn hộ | Pham Land",
+        description: "Xem thông tin chi tiết căn hộ cao cấp phân phối bởi Pham Land.",
+      };
+    }
+
+    const title = `${apt.title} | Pham Land`;
+    const description =
+      apt.description?.toString().replace(/<[^>]*>/g, "").slice(0, 160) ||
+      `Thông tin chi tiết căn hộ ${apt.title} tại ${apt.location || "Miền Trung"}. Giá: ${apt.priceDisplay || "Thỏa thuận"}`;
+    const image = apt.thumbnailUrl || apt.image || "https://www.bdsphamland.com/og-image.jpg";
+
+    return {
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        url: `https://www.bdsphamland.com/can-ho/${params.id}`,
+        images: [{ url: image, alt: apt.title }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: [image],
+      },
+    };
+  } catch {
     return {
       title: "Chi tiết căn hộ | Pham Land",
       description: "Xem thông tin chi tiết căn hộ cao cấp phân phối bởi Pham Land.",
     };
   }
-
-  const title = `${apt.title} | Pham Land`;
-  const description =
-    apt.description?.toString().replace(/<[^>]*>/g, "").slice(0, 160) ||
-    `Thông tin chi tiết căn hộ ${apt.title} tại ${apt.location || "Miền Trung"}. Giá: ${apt.priceDisplay || "Thỏa thuận"}`;
-  const image = apt.thumbnailUrl || apt.image || "https://www.bdsphamland.com/og-image.jpg";
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      url: `https://www.bdsphamland.com/can-ho/${params.id}`,
-      images: [{ url: image, alt: apt.title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [image],
-    },
-  };
 }
 
 export default async function ApartmentDetailPage(props: { params: Promise<{ id: string }> }) {
