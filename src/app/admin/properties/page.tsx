@@ -5,7 +5,8 @@ import Link from "next/link";
 import { getProperties, deleteProperty, Property } from "@/lib/firestore";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
 import toast from "react-hot-toast";
-import { Plus, Search, Pencil, Trash2, Building2, MapPin, Eye } from "lucide-react";
+import { Plus, Search, Pencil, Trash2, Building2, MapPin, Eye, Sparkles } from "lucide-react";
+import { convertAllNewsToProperties } from "@/lib/convertNewsHelper";
 import { format } from "date-fns";
 import { vi } from "date-fns/locale";
 
@@ -30,6 +31,24 @@ export default function PropertiesPage() {
       toast.error("Không thể tải danh sách BĐS");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const [converting, setConverting] = useState(false);
+
+  const handleSyncFromNews = async () => {
+    if (!confirm("Hệ thống sẽ quét toàn bộ bài viết trong Tin tức, tự động phân tích diện tích, giá bán, vị trí, ảnh và tạo thành các Bất động sản trong danh mục Dự án. Bạn có muốn tiếp tục?")) return;
+    setConverting(true);
+    const toastId = toast.loading("Đang đọc và phân tích tin tức sang dự án...");
+    try {
+      const result = await convertAllNewsToProperties();
+      toast.success(`Đã chuyển đổi thành công ${result.count} bất động sản!`, { id: toastId });
+      loadProperties();
+    } catch (err: any) {
+      console.error(err);
+      toast.error(err?.message || "Lỗi khi chuyển đổi", { id: toastId });
+    } finally {
+      setConverting(false);
     }
   };
 
@@ -64,13 +83,24 @@ export default function PropertiesPage() {
             Quản lý tất cả bất động sản trên website
           </p>
         </div>
-        <Link
-          href="/admin/properties/new"
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-medium rounded-xl shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 w-fit"
-        >
-          <Plus className="w-4 h-4" />
-          Thêm BĐS mới
-        </Link>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleSyncFromNews}
+            disabled={converting}
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-sm font-medium rounded-xl transition-all disabled:opacity-50"
+            title="Đọc toàn bộ bài viết trong tin tức và tự động phân tích thành dự án BĐS"
+          >
+            <Sparkles className={`w-4 h-4 ${converting ? "animate-spin" : ""}`} />
+            {converting ? "Đang chuyển đổi..." : "Đồng bộ từ Tin tức (AI Parser)"}
+          </button>
+          <Link
+            href="/admin/properties/new"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white text-sm font-medium rounded-xl shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 w-fit"
+          >
+            <Plus className="w-4 h-4" />
+            Thêm BĐS mới
+          </Link>
+        </div>
       </div>
 
       {/* Search */}
